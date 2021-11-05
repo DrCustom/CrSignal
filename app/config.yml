@@ -1,0 +1,36 @@
+# Copy this file to config.yml to get started and then add your own configuration.
+# Full documentation here: https://github.com/CryptoSignal/crypto-signal/blob/master/docs/config.md
+
+exchanges:
+    binance:
+        required:
+            enabled: true
+        all_pairs:
+            - USDT
+
+notifiers:
+    discord:
+        required:
+            webhook: https://discord.com/api/webhooks/802582695854473226/RpmoVLCOmx5oCdYFHNHIMyWOIAwahYreOLo_kV9BaOdIBPBvbClK7eDtIe_wBwGo_FX8
+            username: CryptoShqip
+        optional:
+            avatar: null
+            template: "{{exchange}}-{{market}}-{{indicator}}-{{indicator_number}} is {{status}}!{{ '\n' -}}"
+
+
+
+indicators:
+    ma_crossover:
+        - enabled: true
+          candle_period: 1m
+          alert_enabled: true
+          alert_frequency: once
+          exponential: true
+          ma_fast: 5
+          ma_slow: 10
+          signal:
+            - open
+            - close
+          hot_label: 'Uptrend is coming'
+          cold_label: 'Downtred is coming'
+          indicator_label: 'EMA 50/100 Cross'
